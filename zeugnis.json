@@ -1,0 +1,25 @@
+"student_Zeugnis":{
+    "id_":"int",//d
+    "firstName":"string",//s
+    "lastName":"string",//s
+    "gender":"enum", //s
+    "birthdate":"date", //s
+    "age":"double", //d
+    "aufstieg": "boolean",//s
+    "WP":[
+        {
+            "Fach":"string",  //s
+            "grade":"enum", //d
+            "aufstieg":"boolean", //s
+            "timestamp":"date" //s
+         }
+
+    ],
+    "subjects":[{
+        "name":"string", //s 
+        "WS":"enum", //d
+        "SS":"enum" //d
+    }],
+    "timestamp": "date" //s
+
+}

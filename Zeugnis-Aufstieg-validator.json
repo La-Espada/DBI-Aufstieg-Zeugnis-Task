@@ -1,0 +1,71 @@
+db.createCollection("students_zeugnis",{
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            title: "Konferenz object Validation",
+            required: ["version","id","nr","aufstieg","student","subject"],
+            properties:{
+                version:{
+                    bsonType:"string",
+                    description:"'version' must be string and is required"
+                },
+                id:{
+                    bsonType:"int",
+                    description: "'name' must be a integer and is required"
+                },
+                aufstieg: {
+                    bsonType: "bool",
+                    description: "'aufstieg' must be a boolean and is required"
+                },
+                firstname: {
+                    bsonType: "string",
+                    description:"'firstname' must be string and is required"
+                },
+                lastname:{
+                     bsonType: "string",
+                     description: "'lastname' must be string and is required"
+                },
+                gender:{
+                    enum:["male","female"],
+                    description: "'gender' must be string and is required"
+                },
+                birthdate:{
+                    bsonType:"date",
+                    description: "'birthdate' must be date and is required"
+                },
+                age:{
+                    bsonType: "double",
+                    description: "'age' must be double and is required"
+                },
+                WP:{
+                    bsonType: "object",
+                    required: ["fach","grade","aufstieg"],
+                    description: "'WP' must be object and is required",
+                    properties:{
+                        fach:{
+                            bsonType:"string",
+                            description: "'name' must be string and is required"
+                        },
+                        grade:{
+                            bsonType:"string",
+                            description: "'WS' must be string and is required"
+                        },
+                        aufstieg:{
+                            bsonType:"bool",
+                            description: "'aufstieg' must be boolean and is required"
+                        },
+                        timestamp:{
+                            bsonType:"date",
+                            description: "'timestamp' must be date"
+                        }
+
+                    }
+                },
+                timestamp:{
+                    bsonType:"date",
+                    description: "'timestamp' must be date"
+                }
+            }    
+         }
+    }
+})
