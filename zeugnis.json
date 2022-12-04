@@ -9,7 +9,7 @@
     "WP":[
         {
             "Fach":"string",  //s
-            "grade":"enum", //d
+            "grade":"string", //d
             "aufstieg":"boolean", //s
             "timestamp":"date" //s
          }

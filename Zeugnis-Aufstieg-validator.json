@@ -61,6 +61,24 @@ db.createCollection("students_zeugnis",{
 
                     }
                 },
+                subject:{
+                bsonType:"object",
+                description: "'subject' must be object",
+                properties:{
+                name:{
+                    bsonType: "string",
+                    description:"'name' must be string"
+                    },
+                WS:{
+                    bsonType: "string",
+                    description: "'WS' must be string"
+                },
+                SS:{
+                    bsonType: "string",
+                    description: "'SS' must be string"
+                }                           
+            }
+        },
                 timestamp:{
                     bsonType:"date",
                     description: "'timestamp' must be date"
