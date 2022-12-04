@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @Getter
 
 @Data
-@Document("student_zeugnis")
-public class Student_zeugnis {
+@Document("studentZeugnis")
+public class StudentZeugnis {
     private String version;
     @Id
     private int id;
