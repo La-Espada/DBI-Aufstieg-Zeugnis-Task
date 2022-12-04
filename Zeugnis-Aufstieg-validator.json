@@ -50,11 +50,7 @@ db.createCollection("students_zeugnis",{
                             bsonType:"string",
                             description: "'WS' must be string and is required"
                         },
-                        aufstieg:{
-                            bsonType:"bool",
-                            description: "'aufstieg' must be boolean and is required"
-                        },
-                        timestamp:{
+                        timeStamp:{
                             bsonType:"date",
                             description: "'timestamp' must be date"
                         }
@@ -79,7 +75,7 @@ db.createCollection("students_zeugnis",{
                 }                           
             }
         },
-                timestamp:{
+                timeStamp:{
                     bsonType:"date",
                     description: "'timestamp' must be date"
                 }

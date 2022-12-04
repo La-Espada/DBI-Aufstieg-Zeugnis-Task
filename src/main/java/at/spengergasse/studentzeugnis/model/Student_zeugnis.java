@@ -23,8 +23,9 @@ public class Student_zeugnis {
     private Gender gender;
     private LocalDate brithDate;
     private double age;
-    private Wiederholungsprüfung WP;
+    private WP WP;
     private Subject subject;
+    private LocalDate timeStamp;
 
 
 }
