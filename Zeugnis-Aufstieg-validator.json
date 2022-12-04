@@ -3,7 +3,7 @@ db.createCollection("students_zeugnis",{
         $jsonSchema:{
             bsonType: "object",
             title: "Konferenz object Validation",
-            required: ["version","id","nr","aufstieg","student","subject"],
+            required: ["version","passed","subject"],
             properties:{
                 version:{
                     bsonType:"string",
@@ -13,7 +13,7 @@ db.createCollection("students_zeugnis",{
                     bsonType:"int",
                     description: "'name' must be a integer and is required"
                 },
-                aufstieg: {
+                passed: {
                     bsonType: "bool",
                     description: "'aufstieg' must be a boolean and is required"
                 },
@@ -26,7 +26,7 @@ db.createCollection("students_zeugnis",{
                      description: "'lastname' must be string and is required"
                 },
                 gender:{
-                    enum:["male","female"],
+                    enum:["MALE","FEMALE"],
                     description: "'gender' must be string and is required"
                 },
                 birthdate:{
@@ -58,7 +58,7 @@ db.createCollection("students_zeugnis",{
                     }
                 },
                 subject:{
-                bsonType:"object",
+                bsonType:["array"],
                 description: "'subject' must be object",
                 properties:{
                 name:{
