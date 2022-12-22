@@ -26,4 +26,6 @@ public class Teacher {
         this.version = version;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.timeStamp = LocalDateTime.now();
+    }
 }

@@ -1,5 +1,6 @@
 package at.spengergasse.studentzeugnis.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Setter
 @Getter
+
 
 @Data
 @Document("class")

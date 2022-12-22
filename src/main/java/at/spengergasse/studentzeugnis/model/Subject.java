@@ -9,5 +9,4 @@ public class Subject {
     private String WS;
     private String SS;
 
-
 }

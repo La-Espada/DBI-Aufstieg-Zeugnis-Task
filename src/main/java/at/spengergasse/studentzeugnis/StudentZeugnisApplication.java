@@ -11,7 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class StudentZeugnisApplication implements CommandLineRunner {
@@ -19,7 +20,6 @@ public class StudentZeugnisApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run(StudentZeugnisApplication.class, args);
     }
-
 
     @Override
     public void run(String... args) throws Exception {

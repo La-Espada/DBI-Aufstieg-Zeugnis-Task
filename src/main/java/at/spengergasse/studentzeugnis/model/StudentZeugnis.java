@@ -1,5 +1,6 @@
 package at.spengergasse.studentzeugnis.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.util.List;
 @Setter
 @Getter
 
+
 @Data
 @Document("students_zeugnis")
 public class StudentZeugnis {
@@ -28,7 +30,6 @@ public class StudentZeugnis {
     private double age;
     private List<WP> WP;
     List <Subject> subjects;
-    private Class studentClass;
     private boolean passed;
     private LocalDateTime timeStamp;
 
@@ -45,6 +46,4 @@ public class StudentZeugnis {
         this.timeStamp = LocalDateTime.now();
 
     }
-
-
 }
