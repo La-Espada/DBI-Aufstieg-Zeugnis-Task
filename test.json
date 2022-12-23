@@ -1,0 +1,48 @@
+db.createCollection("Wahlpflichtfaecher",{
+    validator: {
+        $jsonSchema:{
+        bsonType: "object",
+        title: "Wahlpflichtfaecher Validation",
+        required: ["version","id","vorname","nachname","gebDat","fach","klasse","besucht","angemeldet"],
+        properties: {
+        version:{
+                bsonType:"string",
+                description:"'version' muss string sein"
+        },
+        id:{
+            bsonType: "int",
+            description: "'id' muss int sein"
+        },
+        vorname: {
+            bsonType: "string",
+            description: "vorname muss string sein"
+                },
+        nachname: {
+            bsonType: "string",
+            description: "nachname muss string sein"
+                },
+        gebDat: {
+            bsonType: "date",
+            description: "GebDat muss date sein"
+                },
+        fach: {
+            bsonType: "string",
+            description: "fach muss string sein"
+                },
+        klasse: {
+            bsonType: "string",
+            description: "klasse muss string sein",
+                },
+        besucht: {
+            bsonType: "date",
+            description: "besucht muss date sein"
+                },
+        angemeldet: {
+            bsonType: "date",
+            description: "angemeldet muss date sein"
+                }
+            }
+        }
+    }
+}
+)

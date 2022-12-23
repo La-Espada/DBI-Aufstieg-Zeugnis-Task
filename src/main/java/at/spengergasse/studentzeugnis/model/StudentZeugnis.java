@@ -1,49 +1,48 @@
 package at.spengergasse.studentzeugnis.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.time.LocalDate;
-<<<<<<< HEAD
-=======
+import java.time.LocalDateTime;
 import java.util.List;
->>>>>>> 5fbd3091acdb566ad54f24e87de0c5a7bcb973a7
+
 
 @Setter
 @Getter
 
+
+
 @Data
 @Document("students_zeugnis")
 public class StudentZeugnis {
-    @Id
-    private int id;
     private String version;
-    private boolean passed;
+    @Id
+    private String id;
     private String firstname;
     private String lastname;
     private Gender gender;
-    private LocalDate brithDate;
+    private LocalDate birthDate;
     private double age;
-    private WP WP;
-    private List<Subject> subject;
-    private LocalDate timeStamp;
+    private List<WP> WP;
+    List <Subject> subjects;
+    private boolean passed;
+    private LocalDateTime timeStamp;
 
-    public StudentZeugnis(int id,String version, boolean passed, String firstname, String lastname, Gender gender, LocalDate brithDate, double age, WP WP, List<Subject> subject, LocalDate timeStamp) {
-        this.id = id;
+    @Builder
+    public StudentZeugnis(String version, String firstname, String lastname, Gender gender, LocalDate brithDate, double age, List<WP> WP, List<Subject> subjects, boolean passed) {
         this.version = version;
-        this.passed = passed;
         this.firstname = firstname;
         this.lastname = lastname;
         this.gender = gender;
-        this.brithDate = brithDate;
+        this.birthDate = brithDate;
         this.age = age;
         this.WP = WP;
-        this.subject = subject;
-        this.timeStamp = timeStamp;
+        this.subjects = subjects;
+        this.passed = passed;
+        this.timeStamp = LocalDateTime.now();
+
     }
-
-
 }
