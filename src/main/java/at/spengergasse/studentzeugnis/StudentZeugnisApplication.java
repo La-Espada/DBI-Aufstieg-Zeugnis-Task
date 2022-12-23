@@ -31,7 +31,7 @@ public class StudentZeugnisApplication implements CommandLineRunner {
     @Bean
     CommandLineRunner runner(ClassRepository classRepository, StudentZeugnisRepository studentZeugnisRepository, TeacherRepository teacherRepository) {
         return args -> {
-            classRepository.deleteAll();
+            /*classRepository.deleteAll();
             studentZeugnisRepository.deleteAll();
             teacherRepository.deleteAll();
             Teacher petschenig = new Teacher("1.0.0","Brigitte", "Petschenig");
@@ -73,7 +73,7 @@ public class StudentZeugnisApplication implements CommandLineRunner {
 
             teacherRepository.save(petschenig);
             studentZeugnisRepository.save(cemilAslan);
-            classRepository.save(fiveBHIF);
+            classRepository.save(fiveBHIF);*/
         };
     }
 }

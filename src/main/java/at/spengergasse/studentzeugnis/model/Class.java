@@ -1,9 +1,6 @@
 package at.spengergasse.studentzeugnis.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -29,6 +26,7 @@ public class Class {
     List<StudentZeugnis> studentZeugnis;
     private LocalDateTime timeStamp;
 
+    @Builder
     public Class(String version, String className, Teacher classheadTeacher, List<StudentZeugnis> studentZeugnis) {
         this.version = version;
         this.className = className;
