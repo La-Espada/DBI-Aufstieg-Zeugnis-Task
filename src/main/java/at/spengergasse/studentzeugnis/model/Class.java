@@ -34,4 +34,14 @@ public class Class {
         this.studentZeugnis = studentZeugnis;
         this.timeStamp = LocalDateTime.now();
     }
+
+    @Builder
+    public Class(String id,String version, String className, Teacher classheadTeacher, List<StudentZeugnis> studentZeugnis) {
+        this.id = id;
+        this.version = version;
+        this.className = className;
+        this.classheadTeacher = classheadTeacher;
+        this.studentZeugnis = studentZeugnis;
+        this.timeStamp = LocalDateTime.now();
+    }
 }

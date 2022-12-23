@@ -31,10 +31,10 @@ public class StudentZeugnisApplication implements CommandLineRunner {
     @Bean
     CommandLineRunner runner(ClassRepository classRepository, StudentZeugnisRepository studentZeugnisRepository, TeacherRepository teacherRepository) {
         return args -> {
-            /*classRepository.deleteAll();
+            classRepository.deleteAll();
             studentZeugnisRepository.deleteAll();
             teacherRepository.deleteAll();
-            Teacher petschenig = new Teacher("1.0.0","Brigitte", "Petschenig");
+            Teacher petschenig = new Teacher("1","1.0.0","Brigitte", "Petschenig");
 
 
             Subject germanCemil = new Subject("D","3","3");
@@ -61,19 +61,22 @@ public class StudentZeugnisApplication implements CommandLineRunner {
 
             List<WP> wpsAslan = new ArrayList<>();
 
-            StudentZeugnis cemilAslan = new StudentZeugnis("1.0.0","Cemil","Aslan", Gender.MALE, LocalDate.of(2002,3,20),20,wpsAslan,subjectsAslan,true);
+            StudentZeugnis cemilAslan = new StudentZeugnis("1","1.0.0","Cemil","Aslan", Gender.MALE, LocalDate.of(2002,3,20),20,wpsAslan,subjectsAslan,true);
 
             List<StudentZeugnis> students = new ArrayList<>();
             students.add(cemilAslan);
 
 
 
-            Class fiveBHIF = new Class("1.0.0","5BHIF",petschenig,students);
 
+            Class fiveBHIF = new Class("1","1.0.0","5BHIF",petschenig,students);
 
+            cemilAslan.setStudentClass(fiveBHIF);
+
+            classRepository.save(fiveBHIF);
             teacherRepository.save(petschenig);
             studentZeugnisRepository.save(cemilAslan);
-            classRepository.save(fiveBHIF);*/
+
         };
     }
 }

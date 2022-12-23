@@ -1,12 +1,9 @@
 package at.spengergasse.studentzeugnis.model;
 
-<<<<<<< HEAD
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-=======
-import lombok.*;
->>>>>>> c5bcb5d (added tests for domains)
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -29,6 +26,15 @@ public class Teacher {
 
     @Builder
     public Teacher(String version, String firstname, String lastname) {
+        this.version = version;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.timeStamp = LocalDateTime.now();
+    }
+
+    @Builder
+    public Teacher(String id,String version, String firstname, String lastname) {
+        this.id = id;
         this.version = version;
         this.firstname = firstname;
         this.lastname = lastname;
