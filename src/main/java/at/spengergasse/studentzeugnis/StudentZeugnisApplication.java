@@ -1,9 +1,10 @@
 package at.spengergasse.studentzeugnis;
 
-import at.spengergasse.studentzeugnis.model.Gender;
-import at.spengergasse.studentzeugnis.model.StudentZeugnis;
-import at.spengergasse.studentzeugnis.model.Subject;
+import at.spengergasse.studentzeugnis.model.*;
+import at.spengergasse.studentzeugnis.model.Class;
+import at.spengergasse.studentzeugnis.repository.ClassRepository;
 import at.spengergasse.studentzeugnis.repository.StudentZeugnisRepository;
+import at.spengergasse.studentzeugnis.repository.TeacherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,52 +26,54 @@ public class StudentZeugnisApplication implements CommandLineRunner {
 
     }
 
+
+
     @Bean
-    CommandLineRunner runner(StudentZeugnisRepository studentZeugnisRepository){
+    CommandLineRunner runner(ClassRepository classRepository, StudentZeugnisRepository studentZeugnisRepository, TeacherRepository teacherRepository) {
         return args -> {
-            Subject german = new Subject("D","3","3");
-            Subject math = new Subject("AM","3","3");
-            Subject english = new Subject("E1","3","3");
-            Subject geographyHistory = new Subject("GGP","3","3");
-            Subject sports = new Subject("BESP","3","3");
-            Subject science = new Subject("NW2","3","3");
-            Subject tinf = new Subject("TINF","3","3");
-            Subject programming = new Subject("POS1","3","3");
-            Subject database = new Subject("DBI","3","3");
-
-            //Subject[] subjects = {german,math,english,geographyHistory,sports,science,tinf,programming,database};
-
-            List<Subject> subjects = new ArrayList<>();
-            subjects.add(german);
-            subjects.add(math);
-            subjects.add(english);
-            subjects.add(geographyHistory);
-            subjects.add(sports);
-            subjects.add(science);
-            subjects.add(tinf);
-            subjects.add(programming);
-            subjects.add(database);
+            classRepository.deleteAll();
+            studentZeugnisRepository.deleteAll();
+            teacherRepository.deleteAll();
+            Teacher petschenig = new Teacher("1.0.0","Brigitte", "Petschenig");
 
 
-
-            StudentZeugnis student1 = new StudentZeugnis(
-                    1,
-                    "1.0.0",
-                    true,
-                    "Max",
-                    "Mustermann",
-                    Gender.MALE,
-                    LocalDate.of(2002,3,20),
-                    20.9,
-                    null,
-                    subjects,
-                    LocalDate.now()
-
-            );
-
-            studentZeugnisRepository.save(student1);
+            Subject germanCemil = new Subject("D","3","3");
+            Subject mathCemil = new Subject("AM","2","2");
+            Subject englishCemil = new Subject("E","3","3");
+            Subject posCemil = new Subject("POS","3","3");
+            Subject dbiCemil = new Subject("DBI","3","3");
+            Subject nvsCemil = new Subject("NVS","3","3");
+            Subject preCemil = new Subject("PRE","3","3");
+            Subject relCemil = new Subject("REL","3","3");
+            Subject sportCemil = new Subject("Sport","3","3");
 
 
+            List<Subject> subjectsAslan = new ArrayList<>();
+            subjectsAslan.add(germanCemil);
+            subjectsAslan.add(mathCemil);
+            subjectsAslan.add(englishCemil);
+            subjectsAslan.add(posCemil);
+            subjectsAslan.add(dbiCemil);
+            subjectsAslan.add(nvsCemil);
+            subjectsAslan.add(preCemil);
+            subjectsAslan.add(relCemil);
+            subjectsAslan.add(sportCemil);
+
+            List<WP> wpsAslan = new ArrayList<>();
+
+            StudentZeugnis cemilAslan = new StudentZeugnis("1.0.0","Cemil","Aslan", Gender.MALE, LocalDate.of(2002,3,20),20,wpsAslan,subjectsAslan,true);
+
+            List<StudentZeugnis> students = new ArrayList<>();
+            students.add(cemilAslan);
+
+
+
+            Class fiveBHIF = new Class("1.0.0","5BHIF",petschenig,students);
+
+
+            teacherRepository.save(petschenig);
+            studentZeugnisRepository.save(cemilAslan);
+            classRepository.save(fiveBHIF);
         };
     }
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class Subject {
+   
     private String name;
     private String WS;
     private String SS;
