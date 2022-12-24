@@ -24,12 +24,12 @@ public class Class {
     private String id;
     @NotNull(message = "Classname can not be null")
     private String className;
-    @DBRef
-   //@NotNull(message = "Class Teacher can not be null")
-    private Teacher classTeacher;
-    @DBRef
+    @DocumentReference
+    @NotNull(message = "Class Teacher can not be null")
+    private Teacher classheadTeacher;
+    @DocumentReference
     //@NotNull(message = "Students can not be null")
-    List<StudentZeugnis> students;
+    List<StudentZeugnis> studentZeugnis;
     @NotNull(message = "Time Stamp can not be null")
     private LocalDateTime timeStamp;
 
@@ -38,8 +38,20 @@ public class Class {
         this.id = id;
         this.version = version;
         this.className = className;
-        this.classTeacher = classheadTeacher;
-        this.students = studentZeugnis;
+        this.classheadTeacher = classheadTeacher;
+        this.studentZeugnis = studentZeugnis;
         this.timeStamp = LocalDateTime.now();
+    }
+
+
+    public String getClassInfo() {
+        return "Class{" +
+                "version='" + version + '\'' +
+                ", id='" + id + '\'' +
+                ", className='" + className + '\'' +
+                ", classTeacher=" + classheadTeacher +
+                ", students=" + studentZeugnis +
+                ", timeStamp=" + timeStamp +
+                '}';
     }
 }

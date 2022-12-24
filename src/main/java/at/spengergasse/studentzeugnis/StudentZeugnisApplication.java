@@ -15,15 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-public class StudentZeugnisApplication implements CommandLineRunner {
+public class StudentZeugnisApplication  {
 
     public static void main(String[] args) {
         SpringApplication.run(StudentZeugnisApplication.class, args);
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-
     }
 
 

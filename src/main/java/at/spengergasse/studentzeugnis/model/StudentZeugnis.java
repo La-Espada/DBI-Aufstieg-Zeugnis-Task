@@ -1,12 +1,16 @@
 package at.spengergasse.studentzeugnis.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.persistence.Embedded;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -38,8 +42,11 @@ public class StudentZeugnis {
 
     @DocumentReference
     private Class studentClass;
-    private List<WP> WP;
+     List<WP> WP;
     @NotNull(message = "Subjects can not be null")
+    @Field("subjects")
+    @Embedded
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     List <Subject> subjects;
     @NotNull(message = "Passed can not be null")
     private boolean passed;
@@ -47,18 +54,36 @@ public class StudentZeugnis {
     private LocalDateTime timeStamp;
 
     @Builder
-    public StudentZeugnis(String id,String version, String firstname, String lastname, Gender gender, LocalDate brithDate, double age, List<WP> WP, List<Subject> subjects, boolean passed) {
+    public StudentZeugnis(String id,String version, String firstname, String lastname, Gender gender, LocalDate birthDate, double age, List<WP> WP, List<Subject> subjects, boolean passed) {
         this.id = id;
         this.version = version;
         this.firstname = firstname;
         this.lastname = lastname;
         this.gender = gender;
-        this.birthDate = brithDate;
+        this.birthDate = birthDate;
         this.age = age;
         this.WP = WP;
         this.subjects = subjects;
         this.passed = passed;
         this.timeStamp = LocalDateTime.now();
 
+    }
+
+
+    public String getStudentInfo() {
+        return "StudentZeugnis{" +
+                "version='" + version + '\'' +
+                ", id='" + id + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", gender=" + gender +
+                ", birthDate=" + birthDate +
+                ", age=" + age +
+                ", studentClass=" + studentClass +
+                ", WP=" + WP +
+                ", subjects=" + subjects +
+                ", passed=" + passed +
+                ", timeStamp=" + timeStamp +
+                '}';
     }
 }
