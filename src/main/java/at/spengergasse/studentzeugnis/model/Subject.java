@@ -1,12 +1,20 @@
 package at.spengergasse.studentzeugnis.model;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-@AllArgsConstructor
+
+@NoArgsConstructor
+@Data
 public class Subject {
-   
+    @NotNull(message = "Name can not be null!")
     private String name;
-    private String WS;
-    private String SS;
+    @NotNull(message = "WS can not be null!")
+    private String ws;
+    @NotNull(message = "SS can not be null!")
+    private String ss;
 
 }

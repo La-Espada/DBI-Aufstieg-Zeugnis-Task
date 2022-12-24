@@ -15,15 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-public class StudentZeugnisApplication implements CommandLineRunner {
+public class StudentZeugnisApplication  {
 
     public static void main(String[] args) {
         SpringApplication.run(StudentZeugnisApplication.class, args);
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-
     }
 
 
@@ -31,7 +26,7 @@ public class StudentZeugnisApplication implements CommandLineRunner {
     @Bean
     CommandLineRunner runner(ClassRepository classRepository, StudentZeugnisRepository studentZeugnisRepository, TeacherRepository teacherRepository) {
         return args -> {
-            classRepository.deleteAll();
+            /*classRepository.deleteAll();
             studentZeugnisRepository.deleteAll();
             teacherRepository.deleteAll();
             Teacher petschenig = new Teacher("1","1.0.0","Brigitte", "Petschenig");
@@ -76,6 +71,8 @@ public class StudentZeugnisApplication implements CommandLineRunner {
             classRepository.save(fiveBHIF);
             teacherRepository.save(petschenig);
             studentZeugnisRepository.save(cemilAslan);
+
+             */
 
         };
     }
