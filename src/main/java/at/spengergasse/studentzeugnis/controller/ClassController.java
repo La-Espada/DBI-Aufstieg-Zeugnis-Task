@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:1000")
 @RequestMapping("/class")
 public class ClassController {
 

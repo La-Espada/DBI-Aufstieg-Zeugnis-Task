@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:1000")
 @RequestMapping("/student")
 public class StudentController {
 
