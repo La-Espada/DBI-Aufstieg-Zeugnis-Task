@@ -1,5 +1,6 @@
 package at.spengergasse.studentzeugnis.service;
 
+import at.spengergasse.studentzeugnis.model.Class;
 import at.spengergasse.studentzeugnis.model.StudentZeugnis;
 import at.spengergasse.studentzeugnis.model.Teacher;
 import at.spengergasse.studentzeugnis.repository.StudentZeugnisRepository;
@@ -35,6 +36,19 @@ public class StudentService {
         return studentZeugnisRepository.save(newStudent);
     }
 
+    public StudentZeugnis saveWithClass(StudentZeugnis studentZeugnis, Class newClass){
+        StudentZeugnis newStudent = null;
+
+        var studentTemp = studentZeugnisRepository.findStudentZeugnisByFirstnameAndLastname(studentZeugnis.getFirstname(),studentZeugnis.getLastname());
+        if(studentTemp.isPresent()){
+            log.error("Student {} " + studentZeugnis.getStudentInfo() + " already exists!");
+            return studentTemp.get();
+        }
+        newStudent = studentZeugnis;
+        newStudent.setStudentClass(newClass);
+        log.info("Student {} " +  newStudent.getStudentInfo() + " created: " + newStudent.getTimeStamp());
+        return studentZeugnisRepository.save(newStudent);
+    }
     public void deleteStudent(String id){
         StudentZeugnis newStudent = null;
         Optional<StudentZeugnis> studentList = studentZeugnisRepository.findStudentZeugnisById(id);

@@ -5,6 +5,7 @@ import at.spengergasse.studentzeugnis.controller.www.StudentRequest;
 import at.spengergasse.studentzeugnis.model.Class;
 import at.spengergasse.studentzeugnis.model.StudentZeugnis;
 import at.spengergasse.studentzeugnis.model.Teacher;
+import at.spengergasse.studentzeugnis.repository.ClassRepository;
 import at.spengergasse.studentzeugnis.repository.TeacherRepository;
 import at.spengergasse.studentzeugnis.service.ClassService;
 import at.spengergasse.studentzeugnis.service.StudentService;
@@ -30,6 +31,8 @@ public class ClassController {
 
     @Autowired
     private TeacherRepository teacherRepository;
+    @Autowired
+    private ClassRepository classRepository;
 
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody ClassRequest classRequest) {
@@ -91,10 +94,9 @@ public class ClassController {
                 .passed(studentRequest.isPassed())
                 .build();
 
-        studentZeugnis.setStudentClass(theClass);
         theClass.getStudentZeugnis().add(studentZeugnis);
         studentService.save(studentZeugnis);
-        classService.save(theClass);
+        classRepository.save(theClass);
 
         return ResponseEntity.ok().body(theClass);
     }
