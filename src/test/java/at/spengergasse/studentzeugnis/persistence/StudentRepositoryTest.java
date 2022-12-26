@@ -48,7 +48,7 @@ public class StudentRepositoryTest {
         List<WP> wpsAslan = new ArrayList<>();
 
         StudentZeugnis cemil = StudentZeugnis.builder().version("1.0.0").firstname("Cemil").lastname("Aslan").age(20)
-                .brithDate(LocalDate.of(2002,3,20)).gender(Gender.MALE)
+                .birthDate(LocalDate.of(2002,3,20)).gender(Gender.MALE)
                 .passed(true).WP(wpsAslan).subjects(subjectsAslan).build();
 
         //When

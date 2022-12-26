@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 
-@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Subject {
     @NotNull(message = "Name can not be null!")
