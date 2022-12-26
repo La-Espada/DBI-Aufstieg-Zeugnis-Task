@@ -6,18 +6,19 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+import { AppBar, Button, Toolbar } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 
-function Teacher(id, version, firstname, lastname) {
+function Teacher() {
     const [teachers, setTeacher] = useState([])
-
     let navigate = useNavigate()
 
 
     useEffect(()=>{ 
-        fetch("http://localhost:8080/teacher/")
+        fetch("http://localhost:8080/teacher/",{
+          method:"GET"
+        })
         .then(resposne => resposne.json())
         .then(data => setTeacher(data))
     })
@@ -31,9 +32,9 @@ return (
             <TableCell align="right">Version</TableCell>
             <TableCell align="right">Firstname</TableCell>
             <TableCell align="right">Lastname</TableCell>
-            <TableCell align="right"><Button onClick={
-                ()=>navigate("/createTeacher")
-            } variant ="contained">Create</Button></TableCell>
+            <TableCell align="right"><Button 
+            onClick={()=>navigate("/createTeacher")} 
+            variant ="contained">Create</Button></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -54,6 +55,7 @@ return (
         </TableBody>
       </Table>
     </TableContainer>
+    
   );
 }
 export default Teacher

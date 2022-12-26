@@ -1,10 +1,35 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function CreateTeacher(){
+  const [id,setId] = useState();
+  const [version, setVersion] = useState();
+  const [firstname,setFirstname]= useState();
+  const [lastname,setLastname] = useState();
+  let navigate = useNavigate();
 
 
+
+  async function create(){
+    let teacher = {id,version,firstname,lastname}
+    let result = await fetch("http://localhost:8080/teacher/add",{
+      method:'Post',
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json",
+          },
+          body:JSON.stringify(teacher)
+        }
+    );
+    if(result.ok){
+      //navigate("/teacher");
+    }
+  }
     return(
         <Box
         component="form"
@@ -19,44 +44,33 @@ function CreateTeacher(){
             required
             id="outlined-required"
             label="Required"
+            onChange={(e) => setId(e.target.value)}
             defaultValue="ID"
           />
           <TextField
             required
             id="outlined-required"
             label="Requird"
+            onChange={(e) => setVersion(e.target.value)}
             defaultValue="Version"
           />
           <TextField
             required
             id="outlined-required"
             label="Requird"
+            onChange={(e) => setFirstname(e.target.value)}
             defaultValue="Firstname"
             
           />
-          <TextField
-            id="outlined-read-only-input"
-            label="Read Only"
-            defaultValue="Hello World"
-            InputProps={{
-              readOnly: true,
-            }}
+           <TextField
+            required
+            id="outlined-required"
+            label="Requird"
+            onChange={(e) => setLastname(e.target.value)}
+            defaultValue="Lastname"
+            
           />
-          <TextField
-            id="outlined-number"
-            label="Number"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <TextField id="outlined-search" label="Search field" type="search" />
-          <TextField
-            id="outlined-helperText"
-            label="Helper text"
-            defaultValue="Default Value"
-            helperText="Some important text"
-          />
+          <Button variant='contained' onClick={create}>Add Teacher</Button>
         </div>
         </Box>
     )

@@ -1,19 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
-import { Router, Routes, Route, Navigate, BrowserRouter, } from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import Teacher from './components/teacher/Teacher';
 import CreateTeacher from './components/teacher/createTeacher';
+import Student from './components/student/Student';
+import CreateStudent from './components/student/createStudent';
+import Class from './components/class/Class';
+import StartPage from './components/start/StartPage';
+import CreateClasses from './components/class/createClass';
 
 function App() {
   return (
-    <CreateTeacher></CreateTeacher>
-    /*<BrowserRouter>
-    <Routes>
-      <Route exact path="/teacher" element={<Teacher/>}/>
-      <Route exact path="/createTeacher" element={<CreateTeacher/>}/>
-    </Routes>
-    </BrowserRouter>
-    */
+    <Router>
+      <Routes>
+      <Route path="/" element={<StartPage/>} />
+      <Route path="/teacher" element={<Teacher/>} />
+      <Route path="/createTeacher" element={<CreateTeacher/>} />
+      <Route path="/students" element={<Student/>}/>
+      <Route path="/createStudents" element={<CreateStudent/>}/>
+      <Route path="/classes" element={<Class/>}/>
+      <Route path="/createClasses" element={<CreateClasses/>}/>
+      </Routes>
+      </Router>
+
   );
 }
 
