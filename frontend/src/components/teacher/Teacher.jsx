@@ -12,6 +12,10 @@ import { useNavigate } from 'react-router-dom';
 
 function Teacher() {
     const [teachers, setTeacher] = useState([])
+    const [id, setId] = useState();
+    const [version, setVersion] = useState();
+    const [firstname,setFirstname]= useState();
+    const [lastname,setLastname] = useState();
     let navigate = useNavigate()
 
 
@@ -23,6 +27,22 @@ function Teacher() {
         .then(data => setTeacher(data))
     },[])
    
+
+    async function deleteE(id){
+      let result = await fetch("http://localhost:8080/teacher/"+id,{
+      method:'Delete',
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json",
+          }
+      });
+      if(result.ok){
+        window.location.reload(false);    
+
+     
+      }
+    }
+
 return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -49,7 +69,7 @@ return (
               <TableCell align="right">{teacher.version}</TableCell>
               <TableCell align="right">{teacher.firstname}</TableCell>
               <TableCell align="right">{teacher.lastname}</TableCell>
-              <TableCell align="right"><Button variant ="contained">Delete</Button></TableCell>
+              <TableCell align="right"><Button variant ="contained" value={teacher.id} onClick={(e)=>deleteE(e.target.value)}>Delete</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>

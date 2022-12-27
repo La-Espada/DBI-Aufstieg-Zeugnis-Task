@@ -22,6 +22,21 @@ function Student(){
     .then(data => setStudents(data))
     },[])
 
+    async function deleteE(id){
+      let result = await fetch("http://localhost:8080/student/"+id,{
+      method:'Delete',
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json",
+          }
+      });
+      if(result.ok){
+        window.location.reload(false);    
+
+     
+      }
+    }
+
 
 
     return (
@@ -78,7 +93,7 @@ function Student(){
                     ))}
                     
                     
-                  <TableCell align="right"><Button variant="contained">Delete</Button></TableCell>
+                  <TableCell align="right"><Button variant="contained" value={student.id} onClick={(e)=>deleteE(e.target.value)}>Delete</Button></TableCell>
                 </TableRow>
               ))}
             </TableBody>

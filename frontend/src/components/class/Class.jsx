@@ -22,6 +22,21 @@ function Class() {
         .then(resposne => resposne.json())
         .then(data => setClasses(data))
     },[])
+
+    async function deleteE(id){
+      let result = await fetch("http://localhost:8080/class/"+id,{
+      method:'Delete',
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json",
+          }
+      });
+      if(result.ok){
+        window.location.reload(false);    
+
+     
+      }
+    }
    
 return (
     <TableContainer component={Paper}>
@@ -49,7 +64,7 @@ return (
               <TableCell align="right">{newClass.version}</TableCell>
               <TableCell align="right">{newClass.className}</TableCell>
               <TableCell align="right">{newClass.classheadTeacher.lastname}</TableCell>
-              <TableCell align="right"><Button variant ="contained">Delete</Button></TableCell>
+              <TableCell align="right"><Button variant ="contained" onClick={(e)=> deleteE(newClass.id)}>Delete</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>

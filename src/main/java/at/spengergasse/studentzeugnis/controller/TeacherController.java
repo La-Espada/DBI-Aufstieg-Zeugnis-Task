@@ -34,11 +34,14 @@ public class TeacherController
         return ResponseEntity.ok().body(teacherService.getTeacherById(id));
     }
 
+
+
     @DeleteMapping("/{id}")
     public HttpEntity<Void> deleteTeacher(@PathVariable("id") String id){
         teacherService.deleteTeacher(id);
         return ResponseEntity.ok().build();
     }
+
 
 
 

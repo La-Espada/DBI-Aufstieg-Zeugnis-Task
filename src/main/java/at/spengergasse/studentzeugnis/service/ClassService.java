@@ -38,14 +38,16 @@ public class ClassService {
     public void deleteClass(String id){
         Class classTemp = null;
         Teacher teacher = null;
-        Optional<Teacher> teacher1 = teacherRepository.findTeacherById(id);
         Optional<Class> classList = classRepository.findById(id);
-        if(classList.isPresent() && teacher1.isPresent()){
+        if(classList.isPresent() ){
             classTemp = classList.get();
-            teacher = teacher1.get();
-            teacherRepository.delete(teacher);
-            classRepository.delete(classTemp);
-            log.info("Class {} " + classTemp.getClassInfo() + " deleted: " + LocalDateTime.now());
+            Optional<Teacher> teacher1 = teacherRepository.findTeacherById(classTemp.getClassheadTeacher().getId());
+            if(teacher1.isPresent()) {
+                teacher = teacher1.get();
+                classRepository.delete(classTemp);
+                log.info("Class {} " + classTemp.getClassInfo() + " deleted: " + LocalDateTime.now());
+            }
+
         }
         else {
             log.error("Class with the ID " + id + " does not exist!");
