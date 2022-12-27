@@ -62,6 +62,7 @@ function CreateStudent(){
   const [wpe1Grade,setWP1Grade] =useState();
   const [wpe2grade,setWP2Grade] =useState();
 
+  let navigate = useNavigate();
 
 
   async function create(){
@@ -129,7 +130,7 @@ function CreateStudent(){
     setWP([wp1,wp2])
 
     setSubjects([reli,deu,eng,ggpbe,bespss,amss,nw22,tinfee,poss,dbii])
-    let student = {id,version,firstname,lastname,gender,birthDate,age,subjects,wp,passed}
+    let student = {version,firstname,lastname,gender,birthDate,age,subjects,wp,passed}
     let result = await fetch("http://localhost:8080/student/add",{
       method:'Post',
       headers:{
@@ -140,22 +141,13 @@ function CreateStudent(){
         }
     );
     if(result.ok){
-      //navigate("/teacher");
+      navigate("/students");
     }
   }
     return(
       <Box sx={{ flexGrow: 1, p: 3 }}>
        <h1>Create Student:</h1>
         <Grid container spacing={2}>
-        <Grid item xs ={3}>
-          <TextField
-            required
-            id="outlined-required"
-            label="ID"
-            onChange={(e) => setId(e.target.value)}
-            defaultValue=""
-          />
-          </Grid>
           <Grid item xs ={3}>
           <TextField
             required
@@ -173,7 +165,7 @@ function CreateStudent(){
             onChange={(e) => setFirstname(e.target.value)}
             defaultValue=""/>
       </Grid>
-          <Grid item xs ={4}>
+          <Grid item xs ={6}>
            <TextField
             required
             id="outlined-required"
@@ -197,7 +189,7 @@ function CreateStudent(){
           <MenuItem value={"FEMALE"}>FEMALE</MenuItem>
         </Select>
         </Grid>
-        <Grid item xs ={4}>
+        <Grid item xs ={8}>
         <TextField
             required
             id="outlined-required"
@@ -257,7 +249,7 @@ function CreateStudent(){
             required
             id="outlined-required"
             label="Subject"
-            onChange={(e) => setWP2Subject(e.target.value)}
+            onChange={(e) => setWP1Subject(e.target.value)}
             defaultValue=""/>
           </Grid>
           <Grid item xs ={4}>
@@ -656,7 +648,7 @@ function CreateStudent(){
           <MenuItem value={"S"}>S</MenuItem>
         </Select>
         </Grid>
-          <Button variant='contained' onClick={create}>Add Teacher</Button>
+          <Button variant='contained' onClick={create}>Add Student</Button>
         
         </Grid>
         </Box>
