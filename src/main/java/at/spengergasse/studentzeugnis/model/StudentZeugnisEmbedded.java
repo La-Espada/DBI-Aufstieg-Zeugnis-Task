@@ -1,12 +1,9 @@
 package at.spengergasse.studentzeugnis.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.Builder;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -15,15 +12,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+public class StudentZeugnisEmbedded {
 
-@Setter
-@Getter
-
-
-
-@Data
-@Document("students_zeugnisEmbedded")
-public class StudentZeugnis {
     @NotNull(message = "Version can not be null")
     private String version;
     @Id
@@ -39,10 +29,8 @@ public class StudentZeugnis {
     private LocalDate birthDate;
     @NotNull(message = "Age can not be null")
     private double age;
-
-    @DocumentReference
     private Class studentClass;
-     List<WP> WP;
+    List<WP> WP;
     @NotNull(message = "Subjects can not be null")
     @Field("subjects")
     @Embedded
@@ -54,7 +42,7 @@ public class StudentZeugnis {
     private LocalDateTime timeStamp;
 
     @Builder
-    public StudentZeugnis(String id,String version, String firstname, String lastname, Gender gender, LocalDate birthDate, double age, List<WP> WP, List<Subject> subjects, boolean passed) {
+    public StudentZeugnisEmbedded(String id,String version, String firstname, String lastname, Gender gender, LocalDate birthDate, double age, List<WP> WP, List<Subject> subjects, boolean passed) {
         this.id = id;
         this.version = version;
         this.firstname = firstname;

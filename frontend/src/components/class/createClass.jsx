@@ -1,4 +1,4 @@
-import { Box, MenuItem, Select, TextField } from "@mui/material"
+import { Box, Grid, MenuItem, Select, TextField } from "@mui/material"
 import { useEffect, useState } from "react"
 import { Button } from "react-day-picker"
 
@@ -26,39 +26,38 @@ function CreateClasses(){
         noValidate
         autoComplete="off"
       >
-        <div>
-          <TextField
-            required
-            id="outlined-required"
-            label="ID"
-            onChange={(e) => setId(e.target.value)}
-            defaultValue=""
-          />
-          <TextField
-            required
-            id="outlined-required"
-            label="Version"
-            onChange={(e) => setVersion(e.target.value)}
-            defaultValue=""
-          />
-          <TextField
-            required
-            id="outlined-required"
-            label="Classname"
-            onChange={(e) => setClassName(e.target.value)}
-            defaultValue=""
-            
-          />
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={classheadTeacher}
-          label="classheadTeacher"
-          onChange={(e)=> setClassheadTeacher(e.target.value)}>
-          
-        </Select>
-          <Button variant='contained' >Add Teacher</Button>
-        </div>
+        <Grid>
+       <TextField
+       required
+       id ="outline-required"
+       label="ID"
+       onChange={(e)=>setId(e.target.value)}
+       />
+       <TextField
+       required
+       id ="outline-required"
+       label="Version"
+       onChange={(e)=>setVersion(e.target.value)}
+       />
+       <TextField
+       required
+       id ="outline-required"
+       label="Classname"
+       onChange={(e)=>setClassName(e.target.value)}
+       />
+       <Select
+       required
+       id ="outline-required"
+       label="classheadTeacher"
+       onChange={(e)=>setId(e.target.value)}>
+        {teachers && teachers.map((teacher) =>(
+        <MenuItem>{teacher.lastname}</MenuItem>
+       ))}
+       </Select>
+       <Grid item xs={2}>
+            <Button>Add Teacher</Button>
+       </Grid>
+       </Grid>
         </Box>
     )
 }

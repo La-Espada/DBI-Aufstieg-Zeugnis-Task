@@ -1,0 +1,37 @@
+db.createCollection("class",{
+    validator:{
+        $jsonSchema:{
+            bsonType:"object",
+            title:"Class validation",
+            required:["_id","version","classname","timeStamp"],
+            properties:{
+                _id:{
+                    bsonType:"string",
+                    description:"'_id' must be string and is required!"
+                },
+                version:{
+                    bsonType:"string",
+                    description:"'verison'  must be string and is required!"
+                },
+                classname: {
+                    bsonType: "string",
+                    description:"'classname' must be string and is required"
+                },
+                studentZeugnis:{
+                     bsonType: ["array"],
+                     description: "'studentZeugnis' must be string and is required",
+                     properties:{
+                        _id:{
+                            bsonType: "string",
+                            description:"'_id' must be string"
+                        }
+                     }
+                },
+                timeStamp:{
+                    bsonType:"date",
+                    description: "'timestamp' must be date"
+                }
+            }
+        }
+    }
+})

@@ -1,0 +1,31 @@
+db.createCollection("teacher",{
+    validator:{
+        $jsonSchema:{
+            bsonType:"object",
+            title:"Teacher validation",
+            required:[],
+            properties:{
+                _id:{
+                    bsonType:"string",
+                    description:"'_id' must be string and is required!"
+                },
+                version:{
+                    bsonType:"string",
+                    description:"'verison'  must be string and is required!"
+                },
+                firstname: {
+                    bsonType: "string",
+                    description:"'firstname' must be string and is required"
+                },
+                lastname:{
+                     bsonType: "string",
+                     description: "'lastname' must be string and is required"
+                },
+                timeStamp:{
+                    bsonType:"date",
+                    description: "'timestamp' must be date"
+                }
+            }
+        }
+    }
+})
