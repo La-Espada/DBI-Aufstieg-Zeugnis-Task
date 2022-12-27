@@ -3,7 +3,11 @@ package at.spengergasse.studentzeugnis.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -12,6 +16,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Setter
+@Getter
+
+
+
+@Data
+@Document("students_zeugnis")
 public class StudentZeugnisEmbedded {
 
     @NotNull(message = "Version can not be null")

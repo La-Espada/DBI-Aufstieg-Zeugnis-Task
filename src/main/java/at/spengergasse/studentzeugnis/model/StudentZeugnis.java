@@ -22,7 +22,7 @@ import java.util.List;
 
 
 @Data
-@Document("students_zeugnisEmbedded")
+@Document("students_zeugnis")
 public class StudentZeugnis {
     @NotNull(message = "Version can not be null")
     private String version;
