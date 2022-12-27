@@ -1,21 +1,42 @@
-import { Box, Grid, MenuItem, Select, TextField } from "@mui/material"
+import { Box, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material"
 import { useEffect, useState } from "react"
-import { Button } from "react-day-picker"
+import { Button } from "@mui/material"
+import { useNavigate } from 'react-router-dom';
+
 
 function CreateClasses(){
-    const [id,setId] = useState()
     const [className,setClassName] = useState()
     const [version, setVersion] = useState()
     const [classheadTeacher, setClassheadTeacher] = useState()
     const[teachers, setTeacher] = useState()
 
+    let navigate = useNavigate();
+
     useEffect(()=>{ 
-        fetch("http://localhost:8080/teacher/",{
-          method:"GET"
-        })
-        .then(resposne => resposne.json())
-        .then(data => setTeacher(data))
-    })
+      fetch("http://localhost:8080/teacher/",{
+        method:"GET"
+      })
+      .then(resposne => resposne.json())
+      .then(data => setTeacher(data))
+  },[])
+
+  async function create(){
+    let classe = {version,className,classheadTeacher}
+    let result = await fetch("http://localhost:8080/class/add",{
+      method:'Post',
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json",
+          },
+          body:JSON.stringify(classe)
+        }
+    );
+    if(result.ok){
+      navigate("/classes");
+    }
+  }
+
+
 
     return(
         <Box
@@ -30,12 +51,6 @@ function CreateClasses(){
        <TextField
        required
        id ="outline-required"
-       label="ID"
-       onChange={(e)=>setId(e.target.value)}
-       />
-       <TextField
-       required
-       id ="outline-required"
        label="Version"
        onChange={(e)=>setVersion(e.target.value)}
        />
@@ -45,17 +60,19 @@ function CreateClasses(){
        label="Classname"
        onChange={(e)=>setClassName(e.target.value)}
        />
+
        <Select
        required
        id ="outline-required"
        label="classheadTeacher"
-       onChange={(e)=>setId(e.target.value)}>
+       value={classheadTeacher}
+       onChange={(e)=>setClassheadTeacher(e.target.value)}>
         {teachers && teachers.map((teacher) =>(
-        <MenuItem>{teacher.lastname}</MenuItem>
+        <MenuItem value={teacher.id} >{teacher.lastname}</MenuItem>
        ))}
        </Select>
        <Grid item xs={2}>
-            <Button>Add Teacher</Button>
+            <Button variant="contained" onClick={create}>Add Class</Button>
        </Grid>
        </Grid>
         </Box>

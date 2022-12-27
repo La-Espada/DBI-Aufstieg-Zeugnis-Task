@@ -21,7 +21,7 @@ function Teacher() {
         })
         .then(resposne => resposne.json())
         .then(data => setTeacher(data))
-    })
+    },[])
    
 return (
     <TableContainer component={Paper}>

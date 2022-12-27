@@ -21,7 +21,7 @@ function Class() {
         })
         .then(resposne => resposne.json())
         .then(data => setClasses(data))
-    })
+    },[])
    
 return (
     <TableContainer component={Paper}>

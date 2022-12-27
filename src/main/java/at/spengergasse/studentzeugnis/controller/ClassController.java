@@ -43,7 +43,6 @@ public class ClassController {
             teacher = teacherList.get();
         }
         Class newClass = Class.builder().version(classRequest.getVersion())
-                .id(classRequest.getId())
                 .className(classRequest.getClassName())
                 .classheadTeacher(teacher)
                 .studentZeugnis(classRequest.getStudents())
@@ -84,7 +83,6 @@ public class ClassController {
         Class theClass = classService.getClassesByID(id);
         StudentZeugnis studentZeugnis = StudentZeugnis.builder()
                 .version(studentRequest.getVersion())
-                .id(studentRequest.getId())
                 .firstname(studentRequest.getFirstname())
                 .lastname(studentRequest.getLastname())
                 .gender(studentRequest.getGender())

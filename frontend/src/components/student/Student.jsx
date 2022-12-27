@@ -20,7 +20,8 @@ function Student(){
     })
     .then(response => response.json())
     .then(data => setStudents(data))
-    })
+    },[])
+
 
 
     return (
@@ -77,7 +78,7 @@ function Student(){
                     ))}
                     
                     
-                  <TableCell align="right"><Button variant ="contained">Delete</Button></TableCell>
+                  <TableCell align="right"><Button variant="contained">Delete</Button></TableCell>
                 </TableRow>
               ))}
             </TableBody>

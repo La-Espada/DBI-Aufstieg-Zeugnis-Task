@@ -32,8 +32,7 @@ public class Teacher {
     private LocalDateTime timeStamp;
 
     @Builder
-    public Teacher(String id,String version, String firstname, String lastname) {
-        this.id = id;
+    public Teacher(String version, String firstname, String lastname) {
         this.version = version;
         this.firstname = firstname;
         this.lastname = lastname;

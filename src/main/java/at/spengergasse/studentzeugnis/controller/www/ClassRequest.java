@@ -17,8 +17,6 @@ import java.util.List;
 public class ClassRequest {
     @NotNull(message = "Version can not be null")
     private String version;
-    @NotNull(message = "ID can not be null")
-    private String id;
     @NotNull(message = "Classname can not be null")
     private String className;
     //@NotNull(message = "Class Teacher can not be null")

@@ -34,8 +34,7 @@ public class Class {
     private LocalDateTime timeStamp;
 
     @Builder
-    public Class(String id,String version, String className, Teacher classheadTeacher, List<StudentZeugnis> studentZeugnis) {
-        this.id = id;
+    public Class(String version, String className, Teacher classheadTeacher, List<StudentZeugnis> studentZeugnis) {
         this.version = version;
         this.className = className;
         this.classheadTeacher = classheadTeacher;

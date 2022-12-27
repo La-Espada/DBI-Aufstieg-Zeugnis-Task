@@ -54,8 +54,7 @@ public class StudentZeugnis {
     private LocalDateTime timeStamp;
 
     @Builder
-    public StudentZeugnis(String id,String version, String firstname, String lastname, Gender gender, LocalDate birthDate, double age, List<WP> WP, List<Subject> subjects, boolean passed) {
-        this.id = id;
+    public StudentZeugnis(String version, String firstname, String lastname, Gender gender, LocalDate birthDate, double age, List<WP> WP, List<Subject> subjects, boolean passed) {
         this.version = version;
         this.firstname = firstname;
         this.lastname = lastname;

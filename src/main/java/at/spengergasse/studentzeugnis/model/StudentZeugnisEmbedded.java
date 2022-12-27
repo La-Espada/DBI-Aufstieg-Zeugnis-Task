@@ -53,8 +53,7 @@ public class StudentZeugnisEmbedded {
     private LocalDateTime timeStamp;
 
     @Builder
-    public StudentZeugnisEmbedded(String id,String version, String firstname, String lastname, Gender gender, LocalDate birthDate, double age, List<WP> WP, List<Subject> subjects, boolean passed) {
-        this.id = id;
+    public StudentZeugnisEmbedded(String version, String firstname, String lastname, Gender gender, LocalDate birthDate, double age, List<WP> WP, List<Subject> subjects, boolean passed) {
         this.version = version;
         this.firstname = firstname;
         this.lastname = lastname;

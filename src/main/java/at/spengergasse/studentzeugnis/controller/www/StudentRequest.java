@@ -15,8 +15,6 @@ public class StudentRequest {
     @NotNull
     private String version;
     @NotNull
-    private String id;
-    @NotNull
     private String firstname;
     @NotNull
     private String lastname;

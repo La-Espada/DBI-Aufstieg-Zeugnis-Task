@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 function CreateTeacher(){
-  const [id,setId] = useState();
   const [version, setVersion] = useState();
   const [firstname,setFirstname]= useState();
   const [lastname,setLastname] = useState();
@@ -16,7 +15,7 @@ function CreateTeacher(){
 
 
   async function create(){
-    let teacher = {id,version,firstname,lastname}
+    let teacher = {version,firstname,lastname}
     let result = await fetch("http://localhost:8080/teacher/add",{
       method:'Post',
       headers:{
@@ -27,7 +26,7 @@ function CreateTeacher(){
         }
     );
     if(result.ok){
-      //navigate("/teacher");
+      navigate("/teacher");
     }
   }
     return(
@@ -40,34 +39,28 @@ function CreateTeacher(){
         autoComplete="off"
       >
         <div>
+         
           <TextField
             required
             id="outlined-required"
-            label="Required"
-            onChange={(e) => setId(e.target.value)}
-            defaultValue="ID"
-          />
-          <TextField
-            required
-            id="outlined-required"
-            label="Requird"
+            label="Version"
             onChange={(e) => setVersion(e.target.value)}
-            defaultValue="Version"
+            defaultValue=""
           />
           <TextField
             required
             id="outlined-required"
-            label="Requird"
+            label="Firstname"
             onChange={(e) => setFirstname(e.target.value)}
-            defaultValue="Firstname"
+            defaultValue=""
             
           />
            <TextField
             required
             id="outlined-required"
-            label="Requird"
+            label="Lastname"
             onChange={(e) => setLastname(e.target.value)}
-            defaultValue="Lastname"
+            defaultValue=""
             
           />
           <Button variant='contained' onClick={create}>Add Teacher</Button>
