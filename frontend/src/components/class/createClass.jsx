@@ -47,7 +47,8 @@ function CreateClasses(){
         noValidate
         autoComplete="off"
       >
-        <Grid>
+               <h1>Create Class:</h1>
+      <Grid>
        <TextField
        required
        id ="outline-required"

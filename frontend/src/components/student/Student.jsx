@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { Box } from '@mui/system';
 
 
 function Student(){
@@ -40,6 +41,8 @@ function Student(){
 
 
     return (
+      <Box>
+               <h1>Students:</h1>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
@@ -99,6 +102,7 @@ function Student(){
             </TableBody>
           </Table>
         </TableContainer>
+        </Box>
       );
 }
 export default Student

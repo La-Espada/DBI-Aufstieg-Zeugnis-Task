@@ -3,7 +3,7 @@ db.createCollection("teacher",{
         $jsonSchema:{
             bsonType:"object",
             title:"Teacher validation",
-            required:[],
+            required:["_id","version","firstname","lastname","timeStamp"],
             properties:{
                 _id:{
                     bsonType:"string",

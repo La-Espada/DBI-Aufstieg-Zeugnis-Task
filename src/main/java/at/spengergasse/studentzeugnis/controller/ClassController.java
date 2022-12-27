@@ -52,6 +52,13 @@ public class ClassController {
         System.out.println(newClass.getClassheadTeacher().toString());
         return ResponseEntity.ok().body(newClass);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getClassById(@PathVariable("id") String id){
+        Class aClass = classService.getClassesByID(id);
+        return ResponseEntity.ok().body(aClass);
+    }
+
     @GetMapping("/")
     public ResponseEntity<?> getClasses(){
         List<Class> classList = classService.getClasses();
